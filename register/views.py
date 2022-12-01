@@ -11,8 +11,8 @@ def register(response):
             user = form.save()
             profile = Profile(user=user)
             profile.save()
-        return redirect("")
+        return redirect('login')
     else:
         form = RegisterForm()
 
-    return render(response, "register/register.html", {"form": form})
+    return render(response, 'registration/register.html', {'form': form})
