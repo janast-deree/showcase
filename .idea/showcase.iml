@@ -28,7 +28,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/register/templates" />
-        <option value="$MODULE_DIR$/register/templates/registration" />
+        <option value="$MODULE_DIR$/content/templates" />
       </list>
     </option>
   </component>

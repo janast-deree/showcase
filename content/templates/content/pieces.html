@@ -1,0 +1,22 @@
+<h1>Pieces</h1>
+<div class="row row-cols-lg-3 row-cols-xl-5">
+    {% for piece in pieces %}
+        <div class="col-xl">
+            <div class="card">
+                {% if piece.image %}
+                    <img src="{{ piece.image.url }}" class="card-img-top" alt="{{ piece.name }} image">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ piece.name }}</h5>
+                    <p class="card-text">{{ piece.description }}</p>
+                    <p>by
+                        {% for artist in piece.artists.all %}
+                             {{ artist.name }}
+                        {% endfor %}
+                    </p>
+                    <a href="{% url 'home' %}" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

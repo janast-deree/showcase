@@ -1,0 +1,38 @@
+{% extends 'content/layout.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+    <form class="row" id="filter-pieces" method="POST">
+        {% csrf_token %}
+        <div class="col-md">
+            <input id="name-filter" minlength="3" type="text" class="form-control" placeholder="Piece name" aria-label="Piece name">
+        </div>
+        {% if user.is_authenticated %}
+            <div class="col-lg-auto">
+                <select id="category-filter" class="form-select" aria-label="Default select example">
+                    <option selected>Category</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-auto">
+                <select id="artist-filter" class="form-select" aria-label="Default select example" disabled>
+                    <option selected>Artist</option>
+                    {% for artist in artists %}
+                        <option value="{{ artist.id }}" category="{{ artist.art_id }}">{{ artist.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary w-100">Show results</button>
+        </div>
+    </form>
+    <div id="pieces">
+    {% include 'content/pieces.html' with pieces=pieces  %}
+    </div>
+{% endblock %}
