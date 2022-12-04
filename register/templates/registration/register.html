@@ -1,6 +1,6 @@
-{% extends 'layout.html' %}
+{% extends 'registration/layout.html' %}
 
-{% block tilte %}Create an Account{% endblock %}
+{% block title %}Create an Account{% endblock %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -8,6 +8,6 @@
 	    {% csrf_token %}
 	    {{ register_form | crispy }}
 	    {{ profile_form | crispy }}
-		<button type="submit" class="btn btn-success">Register</button>
+		<button type="submit" class="btn btn-primary">Register</button>
 	</form>
 {% endblock %}

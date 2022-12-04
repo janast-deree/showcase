@@ -1,0 +1,14 @@
+{% extends 'registration/layout.html' %}
+
+{% block title %}My Profile{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <img id="profile-picture" src="{{ profile_form.instance.image.url }}" class="rounded-circle mx-auto d-block" alt="profile picture" />
+    <form method="POST" class="form-group" enctype="multipart/form-data">
+	    {% csrf_token %}
+	    {{ user_form | crispy }}
+	    {{ profile_form | crispy }}
+		<button type="submit" class="btn btn-primary">Update</button>
+	</form>
+{% endblock %}
