@@ -25,12 +25,12 @@ def filter_pieces(request):
                 if 'category' in request.POST:
                     category_id = int(request.POST['category'])
                     pieces = pieces.filter(artists__art_id=category_id)
-            except ValueError:
-                pass
-            try:
-                if 'artist' in request.POST:
-                    artist_id = int(request.POST['artist'])
-                    pieces = pieces.filter(artists__pk=artist_id)
+                    try:
+                        if 'artist' in request.POST:
+                            artist_id = int(request.POST['artist'])
+                            pieces = pieces.filter(artists__pk=artist_id)
+                    except ValueError:
+                        pass
             except ValueError:
                 pass
         else:
