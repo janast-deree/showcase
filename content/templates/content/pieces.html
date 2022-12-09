@@ -8,13 +8,17 @@
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ piece.name }}</h5>
-                    <p class="card-text">{{ piece.description }}</p>
-                    <p>by
-                        {% for artist in piece.artists.all %}
-                             {{ artist.name }}
-                        {% endfor %}
-                    </p>
-                    <a href="{% url 'home' %}" class="stretched-link"></a>
+                    {% if not artist_detail %}
+                        <p class="card-text">{{ piece.description }}</p>
+                        <p>by
+                            {% for artist in piece.artists.all %}
+                                 {{ artist.name }}
+                            {% endfor %}
+                        </p>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'piece' pk=piece.id %}" class="stretched-link"></a>
+                    {% endif %}
                 </div>
             </div>
         </div>

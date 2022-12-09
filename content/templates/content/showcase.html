@@ -1,0 +1,9 @@
+<div class="row">
+    {% if item.image %}
+        <img id="showcase-image" src="{{ item.image.url }}" class="col-lg-4" alt="{{ item.name }} image">
+    {% endif %}
+    <div class="col">
+        <h1>{{ item.name }}</h1>
+        <p>{{ item.description }}</p>
+    </div>
+</div>

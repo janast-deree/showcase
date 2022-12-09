@@ -1,0 +1,12 @@
+{% extends 'content/layout.html' %}
+{% load static %}
+
+{% block title %}{{ artist.name }}{% endblock %}
+
+
+{% block content %}
+    {% include 'content/showcase.html' with item=artist  %}
+    <div id="pieces">
+        {% include 'content/pieces.html' with pieces=artist.pieces.all artist_detail=True %}
+    </div>
+{% endblock %}

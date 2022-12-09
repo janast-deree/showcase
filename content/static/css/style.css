@@ -6,3 +6,7 @@
 .row>* {
     padding-bottom: 15px;
 }
+
+#showcase-image {
+    height: fit-content;
+}

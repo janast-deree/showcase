@@ -33,7 +33,7 @@ class Piece(models.Model):
     name = models.CharField(max_length=150)
     description = models.CharField(max_length=280)
     image = models.ImageField(blank=True, null=True, default=None, upload_to=image_file_name)
-    artists = models.ManyToManyField(Artist, blank=True, default=None, related_name='exhibitions')
+    artists = models.ManyToManyField(Artist, blank=True, default=None, related_name='pieces')
     public = models.BooleanField(default=True)
 
     def __str__(self):

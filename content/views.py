@@ -1,5 +1,8 @@
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 from django.shortcuts import render
 from content.models import Piece, Artist, Art
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
@@ -13,6 +16,23 @@ def index(request):
     else:
         context['pieces'] = context['pieces'].filter(public=True)
     return render(request, 'content/index.html', context)
+
+@login_required
+def artist(request, **kwargs):
+    try:
+        artist_obj = Artist.objects.get(pk=kwargs['pk'])
+        return render(request, 'content/artist.html', {'artist': artist_obj})
+    except ObjectDoesNotExist as e:
+        raise Http404
+
+
+@login_required
+def piece(request, **kwargs):
+    try:
+        piece_obj = Piece.objects.get(pk=kwargs['pk'])
+        return render(request, 'content/piece.html', {'piece': piece_obj})
+    except ObjectDoesNotExist as e:
+        raise Http404
 
 
 def filter_pieces(request):

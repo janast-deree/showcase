@@ -1,0 +1,27 @@
+{% extends 'content/layout.html' %}
+{% load static %}
+
+{% block title %}{{ piece.name }}{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        {% if piece.image %}
+            <img id="showcase-image"  src="{{ piece.image.url }}" class="col-lg-4" alt="{{ piece.name }} image">
+        {% endif %}
+        <div class="col">
+            <h1>{{ piece.name }}</h1>
+            <p>{{ piece.description }}</p>
+            <h1>Artists</h1>
+            {% for artist in piece.artists.all %}
+                <a href="{% url 'artist' pk=artist.id %}" class="text-decoration-none text-reset">
+                    {% include 'content/showcase.html' with item=artist  %}
+                </a>
+                <div id="pieces">
+                    {% include 'content/pieces.html' with pieces=artist.pieces.all artist_detail=True  %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{#    {% include 'content/showcase.html' with item=piece  %}#}
+{% endblock %}
