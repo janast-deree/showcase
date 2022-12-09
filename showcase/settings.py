@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-xvpfa)p1_dy#8_srwntiz59__1)km=g7gg8v995c#xxd$!+8z5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['showcase-itc4214.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','showcase-itc4214.herokuapp.com']
 
 
 # Application definition
@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'showcase.urls'
@@ -130,10 +131,9 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'content/static/'),
-    os.path.join(BASE_DIR, 'register/static/')
-]
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 MEDIA_URL = '/media/'
 
