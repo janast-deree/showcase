@@ -3,7 +3,7 @@
         <img id="showcase-image" src="{{ item.image.url }}" class="col-lg-4" alt="{{ item.name }} image">
     {% endif %}
     <div class="col">
-        <h1>{{ item.name }}</h1>
+        <h1>{{ item.name }}{% if item.art %} - {{ item.art.name }}{% endif %}</h1>
         <p>{{ item.description }}</p>
     </div>
 </div>
