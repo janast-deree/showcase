@@ -13,7 +13,7 @@ def register(request):
     if request.method == "POST":
         register_form = RegisterForm(request.POST)
         if not register_form.is_valid():
-            return  # TODO
+            return HttpResponseBadRequest
         user = register_form.save()
         user_profile = Profile(user=user)
         user_profile.save()
