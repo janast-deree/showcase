@@ -4,7 +4,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <img id="profile-picture" src="{{ profile_form.instance.image.url }}" class="rounded-circle mx-auto d-block" alt="profile picture" />
+    {% if profile_form.instance.image %}
+        <img id="profile-picture" src="{{ profile_form.instance.image.url }}" class="rounded-circle mx-auto d-block" alt="profile picture" />
+    {% endif %}
     <form method="POST" class="form-group" enctype="multipart/form-data">
 	    {% csrf_token %}
 	    {{ user_form | crispy }}
