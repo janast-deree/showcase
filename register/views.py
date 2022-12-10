@@ -20,7 +20,7 @@ def register(request):
         profile_form = ProfileForm(request.POST, request.FILES, instance=user_profile)
         if profile_form.is_valid():
             profile_form.save()
-        login(user)
+        login(request, user)
         return redirect('home')
 
     return render(request, 'registration/register.html',
